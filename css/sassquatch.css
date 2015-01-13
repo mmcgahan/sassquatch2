@@ -973,16 +973,16 @@ Clears floated children.
 ```
 @extend %clearfix;
 */
-.contentBounds {
+.bounds, .group {
   /**
   * For IE 6/7 only
   * Include this rule to trigger hasLayout and contain floats.
   */
   *zoom: 1; }
-  .contentBounds:before, .contentBounds:after {
+  .bounds:before, .group:before, .bounds:after, .group:after {
     content: " ";
     display: table; }
-  .contentBounds:after {
+  .bounds:after, .group:after {
     clear: both; }
 
 /*doc
@@ -1062,7 +1062,7 @@ title: Text protection shim
 name: textProtection
 parent: text
 ---
-Adds a pseudo-element gradient 
+Adds a pseudo-element gradient
 ```
 @mixin textProtectionScrim($placement: 'top'); // 'bottom' will place gradent on bottom of el
 ```
@@ -1226,11 +1226,9 @@ parent: typesetting
 <p class="text--hint">This is hint text</p>
 ```
 */
-.text--hint,
-.hint-text {
+.text--hint {
   color: rgba(0, 0, 0, 0.26); }
-  .inverted .text--hint, .inverted
-  .hint-text {
+  .inverted .text--hint {
     color: rgba(255, 255, 255, 0.3); }
 
 /*doc
@@ -1243,11 +1241,9 @@ parent: typesetting
 <p class="text--secondary">Secondary text is secondary</p>
 ```
 */
-.text--secondary,
-.text-secondary {
+.text--secondary {
   color: rgba(0, 0, 0, 0.54); }
-  .inverted .text--secondary, .inverted
-  .text-secondary {
+  .inverted .text--secondary {
     color: rgba(255, 255, 255, 0.7); }
 
 /*doc
@@ -1261,9 +1257,7 @@ parent: typesetting
 ```
 */
 .text--caption,
-.caption-text,
-.text--small,
-.text-small {
+.text--small {
   font-size: 13px;
   line-height: 1.25; }
 
@@ -1277,11 +1271,9 @@ parent: typesetting
 <p class="text--caption">I'm captioning all the things</p>
 ```
 */
-.text--caption,
-.caption-text {
+.text--caption {
   color: rgba(0, 0, 0, 0.54); }
-  .inverted .text--caption, .inverted
-  .caption-text {
+  .inverted .text--caption {
     color: rgba(255, 255, 255, 0.7); }
 
 /*doc
@@ -1311,11 +1303,9 @@ event descriptions).
 </div>
 ```
 */
-.runningText p,
-.running-text-container p {
+.runningText p {
   margin-bottom: 16px; }
-  .runningText p:last-child,
-  .running-text-container p:last-child {
+  .runningText p:last-child {
     margin-bottom: 0; }
 
 /*doc
@@ -1392,15 +1382,13 @@ to give it the appearance of an h3-h6 element.
 ```
 */
 h3, h4, h5, h6,
-.text--heading,
-.heading {
+.text--heading {
   color: rgba(0, 0, 0, 0.87);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5; }
   .inverted h3, .inverted h4, .inverted h5, .inverted h6, .inverted
-  .text--heading, .inverted
-  .heading {
+  .text--heading {
     color: white; }
 
 /*doc
@@ -1415,19 +1403,16 @@ Display text for header hero elements.
 <h1 class="text--display">The hero gotham deserves</h1>
 ```
 */
-.text--display,
-.display {
+.text--display {
   color: rgba(0, 0, 0, 0.87);
   font-size: 56px;
   font-weight: normal;
   line-height: 1.25; }
-  .inverted .text--display, .inverted
-  .display {
+  .inverted .text--display {
     color: white; }
 
 @media only screen and (max-width: 440px) {
-  .text--display,
-  .display {
+  .text--display {
     font-size: 32px; } }
 .list--reset {
   list-style: none;
@@ -1596,17 +1581,17 @@ Display text for header hero elements.
     background-image: -webkit-linear-gradient( right , #fff, rgba(255, 255, 255, 0));
     background-image: linear-gradient(to left, #fff, rgba(255, 255, 255, 0)); }
 
-.docStripe--collection .hscroll-wrap-wrap:before {
+.stripe--collection .hscroll-wrap-wrap:before {
   background-image: -webkit-linear-gradient( left , #F3F6F9, rgba(243, 246, 249, 0));
   background-image: linear-gradient(to right, #F3F6F9, rgba(243, 246, 249, 0)); }
-.docStripe--collection .hscroll-wrap-wrap:after {
+.stripe--collection .hscroll-wrap-wrap:after {
   background-image: -webkit-linear-gradient( right , #F3F6F9, rgba(243, 246, 249, 0));
   background-image: linear-gradient(to left, #F3F6F9, rgba(243, 246, 249, 0)); }
 
-.docStripe--inverted .hscroll-wrap-wrap:before {
+.stripe--inverted .hscroll-wrap-wrap:before {
   background-image: -webkit-linear-gradient( left , #353E48, rgba(53, 62, 72, 0));
   background-image: linear-gradient(to right, #353E48, rgba(53, 62, 72, 0)); }
-.docStripe--inverted .hscroll-wrap-wrap:after {
+.stripe--inverted .hscroll-wrap-wrap:after {
   background-image: -webkit-linear-gradient( right , #353E48, rgba(53, 62, 72, 0));
   background-image: linear-gradient(to left, #353E48, rgba(53, 62, 72, 0)); }
 
@@ -1623,7 +1608,7 @@ body {
   position: relative; }
 
 .hero,
-.docStripe.hero {
+.stripe.hero {
   background-color: #d55741; }
 
 .hero-photo {
@@ -1759,7 +1744,7 @@ body {
           -o-transform: translateY(100vh);
           transform: translateY(100vh); } }
 
-.viewBody .docStripe:first-child {
+.viewBody .stripe:first-child {
   padding-top: 48px; }
 
 .viewHead {
@@ -1774,17 +1759,17 @@ body {
   top: 0;
   width: 100%;
   z-index: 1; }
-  .viewHead .contentBounds--standard {
+  .viewHead .bounds--standard {
     display: block; }
-  .viewHead .contentBounds--search {
+  .viewHead .bounds--search {
     display: none; }
-  .viewHead.viewHead--search .contentBounds--standard {
+  .viewHead.viewHead--search .bounds--standard {
     display: none; }
-  .viewHead.viewHead--search .contentBounds--search {
+  .viewHead.viewHead--search .bounds--search {
     display: block; }
-  .viewHead .contentBounds {
+  .viewHead .bounds {
     padding: 0 16px; }
-  .viewHead .contentBounds, .viewHead .ffbox {
+  .viewHead .bounds, .viewHead .ffbox {
     height: 100%; }
   .viewHead h1 {
     white-space: nowrap;
@@ -1858,7 +1843,7 @@ body {
       opacity: 0; }
 
 /* Items around forms */
-.contentBounds--form {
+.bounds--form {
   max-width: 550px; }
 
 .chunkList--form > li {
@@ -2335,51 +2320,51 @@ TODO: link to separate layout visual example page
 */
 /*doc
 ---
-title: Doc stripe
-name: docStripe
+title: Stripe
+name: stripe
 parent: layout
 ---
-A `.docStripe` class should be applied to `<section>` elements
+A `.stipe` class should be applied to `<section>` elements
 to visually divide the page with stripes of color.
 
-To align content within a stripe, use [`.contentBounds`](contentBounds).
+To align content within a stripe, use `.bounds`.
 
 ```html_example
-<section class="docStripe">
-	<div class="contentBounds">
+<section class="stripe">
+	<div class="bounds">
 		<p>... default stripe ...</p>
 	</div>
 </section>
 
-<section class="docStripe--inverted inverted">
-	<div class="contentBounds">
+<section class="stripe--inverted inverted">
+	<div class="bounds">
 		<p>... inverted stripe, using `inverted` class to set text colors  ...</p>
 	</div>
 </section>
 
-<section class="docStripe--collection">
-	<div class="contentBounds">
-		<p>... collection variant of docStripe, used to contain collections of cards </p>
+<section class="stripe--collection">
+	<div class="bounds">
+		<p>... collection variant of stripe, used to contain collections of cards </p>
 	</div>
 </section>
 ```
 
 */
-.docStripe {
+.stripe {
   overflow: hidden;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   background-color: #fff; }
 
-.docStripe--collection {
+.stripe--collection {
   background: #F3F6F9; }
 
-.docStripe--inverted {
+.stripe--inverted {
   background: #353E48; }
 
 /*doc
 ---
-title: Content bounds
-name: contentBounds
+title: Bounds
+name: bounds
 parent: layout
 ---
 Used as a non-visual content container that manages content measure,
@@ -2389,31 +2374,57 @@ Centers children with auto margin, clears floats, applies
 padding, and sets a max-width.
 
 ```html_example
-<section class="docStripe">
-	<p>This is just a paragraph inside a docStripe. There's no contentBounds element to center and set the measure of this text.</p>
+<section class="stripe">
+	<p>This is just a paragraph inside a stripe. There's no bounds element to center and set the measure of this text.</p>
 </section>
 
-<section class="docStripe">
-	<div class="contentBounds">
-		<p>This paragraph is inside a contentBounds. It enjoyes auto-margin and a max-width to ensure the type measure remains readable at all viewport sizes.</p>
+<section class="stripe">
+	<div class="bounds">
+		<p>This paragraph is inside a bounds. It enjoyes auto-margin and a max-width to ensure the type measure remains readable at all viewport sizes.</p>
 	</div>
 </section>
 
-<section class="docStripe">
-	<div class="contentBounds _DOC-SHADE">
+<section class="stripe">
+	<div class="bounds _DOC-SHADE">
 		<p><strong>Previous example, shaded to show detail</strong></p>
-		<p>This paragraph is inside a contentBounds. It enjoyes auto-margin and a max-width to ensure the type measure remains readable.</p>
+		<p>This paragraph is inside a bounds. It enjoyes auto-margin and a max-width to ensure the type measure remains readable.</p>
 	</div>
 </section>
 ```
 */
-.contentBounds {
+.bounds {
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   max-width: 1100px;
   padding: 16px;
   width: 100%; }
+
+/*doc
+---
+title: Group
+name: group
+parent: layout
+---
+Groups sections of content, adding
+a margin-bottom.
+
+```html_example
+<div class="_DOC-SHADE group">
+	<h2>Some heading</h2>
+	<p>Some text</p>
+	<p class="text--caption">Some kind of caption</p>
+</div>
+
+<div class="_DOC-SHADE group">
+	<h2>Some heading</h2>
+	<p>Some text</p>
+	<p class="text--caption">Some kind of caption</p>
+</div>
+```
+*/
+.group {
+  margin-bottom: 16px; }
 
 /*doc
 ---
@@ -2510,6 +2521,23 @@ _Includes `table-cell` fallback for IE8._
   align-items: flex;
   -ms-flex-align: flex; }
 
+.flexRow-item--shrink, .flexRow-item--grow {
+  padding-left: 16px; }
+  .flexRow-item--shrink:first-child, .flexRow-item--grow:first-child {
+    padding-left: 0; }
+
+.flexRow-item--shrink {
+  -webkit-flex-shrink: 1;
+  -moz-flex-shrink: 1;
+  flex-shrink: 1;
+  -ms-flex-negative: 1; }
+
+.flexRow-item--grow {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  flex-grow: 1;
+  -ms-flex-positive: 1; }
+
 /*doc
 ---
 title: flexRow variants
@@ -2522,12 +2550,17 @@ following classes are optional variants:
 
 Class                       | Description
 --------------------------- | -------------------------------
+`.flexRow--noGutters`       | removes padding from all `.flexRow-item` children
 `.flexRow--reverse`         | reverses row order
 `.flexRow--flexEnd`         | justifies content to `flex-end`
 `.flexRow--center`          | justifies content to `center`
 `.flexRow--spaceBetween`    | justifies content to `spaceBetween`
 `.flexRow--spaceAround`     | justifies content to `spaceAround`
 */
+.flexRow--noGutters .flexrow-item--grow,
+.flexRow--noGutters .flexrow-item--shrink {
+  padding: 0; }
+
 .flexRow--reverse {
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
@@ -2583,43 +2616,6 @@ Class                       | Description
   -o-justify-content: space-around;
   justify-content: space-around;
   -ms-flex-pack: center; }
-
-/*doc
----
-title: flexRow-item variants
-name: flexrowChild
-parent: flexRow
----
-
-A class of `.flexRow-item--shirnk` or `.flexRow-item--grow` on
-flexRow children is __required__. The following classes are optional variants:
-
-Class                         | Description
------------------------------ | -------------------------------
-`.flexRow-item--gutterRight`  | adds `padding-right` to item
-`.flexRow-item--gutterLeft`   | adds `padding-left` to item
-`.flexRow-item--gutterBoth`   | adds `padding-both` sides of item
-*/
-.flexRow-item--gutterRight {
-  padding-right: 16px; }
-
-.flexRow-item--gutterLeft {
-  padding-left: 16px; }
-
-.flexRow-item--gutterBoth {
-  padding: 0 16px; }
-
-.flexRow-item--shrink {
-  -webkit-flex-shrink: 1;
-  -moz-flex-shrink: 1;
-  flex-shrink: 1;
-  -ms-flex-negative: 1; }
-
-.flexRow-item--grow {
-  -webkit-flex-grow: 1;
-  -moz-flex-grow: 1;
-  flex-grow: 1;
-  -ms-flex-positive: 1; }
 
 .lt--IE9 .flexRow {
   -webkit-box-sizing: border-box;
