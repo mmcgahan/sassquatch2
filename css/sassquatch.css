@@ -130,7 +130,7 @@ name: animation
 parent: mixinsPlaceholders
 ---
 */
-.toggle-on, .animate--bounceInSubtle, .animate--spin {
+.toggle--on, .animate--bounceInSubtle, .animate--spin {
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center; }
@@ -361,6 +361,26 @@ Aligns children of selected element using flexbox.
   justify-content: center;
   -ms-flex-pack: center; }
 
+.stripe--hero-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: end;
+  box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end; }
+
 /*doc
 ---
 title: Animation
@@ -368,7 +388,7 @@ name: animation
 parent: mixinsPlaceholders
 ---
 */
-.toggle-on, .animate--bounceInSubtle, .animate--spin {
+.toggle--on, .animate--bounceInSubtle, .animate--spin {
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center; }
@@ -1663,6 +1683,15 @@ To align content within a stripe, use `.bounds`.
 </section>
 ```
 
+#### Stripe variants
+A class of `.stripe` is required; the following classes are
+optional variants:
+
+Class                | Description
+-------------------- | ------------------------------------------------------------
+`.stripe--inverted`  |  applies the standard `$C_contentBGInverted` background color
+`.stripe--collection`|  applies a light gray background; for use with card collections
+`.stripe--hero`      |  for hero header stripes
 */
 .stripe {
   overflow: hidden;
@@ -1674,6 +1703,27 @@ To align content within a stripe, use `.bounds`.
 
 .stripe--inverted {
   background: #353E48; }
+
+.stripe--hero {
+  background-color: #d55741;
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  border-top: none;
+  margin-bottom: 0;
+  overflow: hidden;
+  position: relative; }
+  .stripe--hero:before {
+    background-color: rgba(15, 20, 31, 0);
+    background-image: -webkit-linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
+    background-image: linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    top: 0; }
 
 /*doc
 ---
@@ -1929,6 +1979,228 @@ Class                   | Description
 .lt--IE9 .row-item--shrink {
   width: auto; }
 
+body {
+  position: relative; }
+
+/*doc
+---
+title: Views
+name: views
+category: Core
+---
+*/
+/*doc
+---
+title: View hero
+name: hero
+parent: views
+---
+
+```html_example
+<header class="stripe--hero" style="background-image: url(http://photos4.meetupstatic.com/photos/event/9/7/7/2/600_432758770.jpeg);">
+	<div class="bounds stripe--hero-content inverted">
+		<h1 class="text--display">Hero header heading</h1>
+	</div>
+</header>
+```
+*/
+.stripe--hero-content {
+  min-height: 384px;
+  position: relative; }
+  @media only screen and (max-width: 640px) {
+    .stripe--hero-content {
+      min-height: 240px; } }
+
+.view {
+  background: white;
+  width: 100%;
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  .view.has-hero {
+    padding-top: 0; }
+  .view.view--split, .view.view--detail {
+    display: none; }
+    .view.view--split.focus, .view.view--detail.focus {
+      display: block; }
+  @media only screen and (min-width: 640px) {
+    .view.view--split, .view.view--detail {
+      display: block; }
+      .view.view--split.off, .view.view--detail.off {
+        display: none; }
+    .view.view--split {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 320px;
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+      .view.view--split .viewHead {
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        width: 320px; }
+      .view.view--split .viewBody {
+        height: 100vh;
+        overflow: auto; }
+    .view.view--detail {
+      padding-left: 320px; }
+      .view.view--detail .viewHead {
+        left: 320px;
+        right: 0;
+        width: auto; }
+        .view.view--detail .viewHead .viewHead-back {
+          display: none; } }
+
+.view--modal-full {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+  left: 0;
+  margin: 0;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 3; }
+  .view--modal-full.off {
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh); }
+
+.view--modal-snap {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.2s ease;
+  -moz-transition: -moz-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  left: 50%;
+  margin-left: -220px;
+  margin-top: 10vh;
+  min-height: 440px;
+  position: absolute;
+  width: 440px;
+  z-index: 3; }
+  .view--modal-snap.off {
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh); }
+  @media only screen and (max-width: 440px) {
+    .view--modal-snap {
+      -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transition: -webkit-transform 0.3s;
+      -moz-transition: -moz-transform 0.3s;
+      transition: transform 0.3s;
+      left: 0;
+      margin: 0;
+      min-height: 100vh;
+      position: absolute;
+      top: 0;
+      width: 100%; }
+      .view--modal-snap.off {
+        -webkit-transform: translateY(100vh);
+        -ms-transform: translateY(100vh);
+        transform: translateY(100vh); } }
+
+.viewBody .stripe:first-child {
+  padding-top: 48px; }
+
+.viewHead {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #d55741;
+  color: white;
+  height: 48px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1; }
+  .viewHead .bounds--standard {
+    display: block; }
+  .viewHead .bounds--search {
+    display: none; }
+  .viewHead.viewHead--search .bounds--standard {
+    display: none; }
+  .viewHead.viewHead--search .bounds--search {
+    display: block; }
+  .viewHead .bounds {
+    padding: 0 16px; }
+  .viewHead .bounds, .viewHead .ffbox {
+    height: 100%; }
+  .viewHead h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .viewHead .viewHead-back {
+    width: 24px; }
+  .viewHead .viewHead-heading {
+    padding-left: 8px; }
+  .viewHead .viewHead-actions {
+    padding: 0 !important;
+    white-space: nowrap; }
+    .viewHead .viewHead-actions a {
+      box-sizing: border-box;
+      display: inline-block;
+      padding: 0 8px; }
+      .viewHead .viewHead-actions a:last-child {
+        padding-right: 0; }
+  .viewHead.has-hero {
+    background: transparent;
+    border-bottom: none;
+    color: white; }
+    .viewHead.has-hero h1 {
+      opacity: 0; }
+  .viewHead.has-hero.has-hero-photo {
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), transparent);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), transparent); }
+
+.viewHead--search {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #d55741; }
+
+.view--searchMode .viewHead--search {
+  display: block; }
+.view--searchMode .viewBody {
+  display: none; }
+
+.shade {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 1; }
+  .shade .x {
+    -webkit-transition: all 0.15s 0.15s;
+    transition: all 0.15s 0.15s;
+    display: block;
+    height: 100vh;
+    left: 0;
+    line-height: 100vh;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    vertical-align: middle;
+    width: 100%; }
+  .shade.off {
+    opacity: 0; }
+    .shade.off .x {
+      opacity: 0; }
+
 /*doc
 ---
 title: Avatar
@@ -2052,15 +2324,12 @@ Class                   | Description
 `.button--icon`         | cirular icon above caption text (see example above)
 `.button--small`        | decreases size of button
 */
-.button {
-  background-color: transparent;
+.button, .toggleButton-label {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: background 0.15s;
   transition: background 0.15s;
   border-radius: 50px;
-  border: none;
-  color: #3987cb;
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
@@ -2068,6 +2337,11 @@ Class                   | Description
   margin: 8px 4px;
   padding: 8px 16px;
   text-align: center; }
+
+.button {
+  background-color: transparent;
+  border: none;
+  color: #3987cb; }
   .button:focus {
     outline: 0; }
   .button:hover, .button:active, .button:focus {
@@ -2081,7 +2355,7 @@ Class                   | Description
     .button.button--disabled.button--primary {
       background: rgba(0, 0, 0, 0.26); }
 
-.button--fullWidth,
+.button--fullWidth, .toggleButton-label,
 .button--bordered {
   background-color: #3987cb;
   color: white;
@@ -2089,34 +2363,34 @@ Class                   | Description
   background: rgba(57, 135, 203, 0);
   color: #3987cb;
   font-weight: 400; }
-  .button--fullWidth:focus,
+  .button--fullWidth:focus, .toggleButton-label:focus,
   .button--bordered:focus {
     outline: 0; }
-  .button--fullWidth:hover,
-  .button--fullWidth:active,
-  .button--fullWidth:focus,
+  .button--fullWidth:hover, .toggleButton-label:hover,
+  .button--fullWidth:active, .toggleButton-label:active,
+  .button--fullWidth:focus, .toggleButton-label:focus,
   .button--bordered:hover,
   .button--bordered:active,
   .button--bordered:focus {
     background: #619fd6; }
-  .button--disabled.button--fullWidth,
+  .button--disabled.button--fullWidth, .button--disabled.toggleButton-label,
   .button--bordered.button--disabled {
     opacity: .4;
     color: rgba(0, 0, 0, 0.87);
     cursor: default; }
-    .button--disabled.button--fullWidth:hover,
-    .button--disabled.button--fullWidth:active,
-    .button--disabled.button--fullWidth:focus,
+    .button--disabled.button--fullWidth:hover, .button--disabled.toggleButton-label:hover,
+    .button--disabled.button--fullWidth:active, .button--disabled.toggleButton-label:active,
+    .button--disabled.button--fullWidth:focus, .button--disabled.toggleButton-label:focus,
     .button--bordered.button--disabled:hover,
     .button--bordered.button--disabled:active,
     .button--bordered.button--disabled:focus {
       background: #3987cb; }
-    .button--disabled.button--primary.button--fullWidth,
+    .button--disabled.button--primary.button--fullWidth, .button--disabled.button--primary.toggleButton-label,
     .button--bordered.button--disabled.button--primary {
       background: rgba(0, 0, 0, 0.26); }
-  .button--fullWidth:hover,
-  .button--fullWidth:active,
-  .button--fullWidth:focus,
+  .button--fullWidth:hover, .toggleButton-label:hover,
+  .button--fullWidth:active, .toggleButton-label:active,
+  .button--fullWidth:focus, .toggleButton-label:focus,
   .button--bordered:hover,
   .button--bordered:active,
   .button--bordered:focus {
@@ -2145,6 +2419,7 @@ Class                   | Description
   padding: 8px;
   width: 24px; }
 
+.toggleButton-label,
 .button--small {
   font-size: 13px;
   padding: 4px 8px; }
@@ -2211,225 +2486,6 @@ Class                   | Description
       background: rgba(255, 255, 255, 0.7); }
     .button--contrast.button--disabled.button--primary {
       background: rgba(0, 0, 0, 0.26); }
-
-/* DATE PICKER */
-.picker {
-  position: absolute;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  z-index: 3; }
-
-.picker__input {
-  background-image: url(/style/img/web/calendar.svg);
-  background-position: center right 4px;
-  background-repeat: no-repeat;
-  cursor: pointer; }
-  .picker__input.picker__input--active {
-    border-color: #3987cb; }
-
-.picker__holder {
-  width: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-
-.picker__holder,
-.picker__frame {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 100%; }
-
-.picker__holder {
-  position: fixed;
-  -webkit-transition: background 0.15s ease-out, top 0s 0.15s;
-  -moz-transition: background 0.15s ease-out, top 0s 0.15s;
-  transition: background 0.15s ease-out, top 0s 0.15s;
-  -webkit-backface-visibility: hidden; }
-
-.picker__frame {
-  opacity: 0;
-  position: absolute;
-  margin: 0 auto;
-  max-width: 550px;
-  width: 100%;
-  -webkit-transition: all 0.15s ease-out;
-  -moz-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out; }
-  @media only screen and (min-width: 440px) {
-    .picker__frame {
-      overflow: visible;
-      top: auto;
-      bottom: -100%;
-      max-height: 80%; } }
-  @media only screen and (min-width: 640px) {
-    .picker__frame {
-      margin-bottom: 10%; } }
-
-.picker__wrap {
-  display: table;
-  height: 100%;
-  margin: 0 auto;
-  max-width: 550px;
-  width: 100%; }
-
-.picker__box {
-  background: #FFFFFF;
-  border-radius: 2px;
-  display: table-cell;
-  vertical-align: middle; }
-
-.picker--opened .picker__holder {
-  top: 0;
-  zoom: 1;
-  background: rgba(0, 0, 0, 0.75);
-  -webkit-transition: background 0.15s ease-out;
-  -moz-transition: background 0.15s ease-out;
-  transition: background 0.15s ease-out; }
-  .picker--opened .picker__holder .picker__frame {
-    top: 0;
-    opacity: 1; }
-    @media only screen and (min-width: 440px) {
-      .picker--opened .picker__holder .picker__frame {
-        top: auto;
-        bottom: 0; } }
-
-/* DATE PICKER - CALENDAR */
-.picker__header {
-  padding: 16px;
-  position: relative;
-  text-align: center; }
-  @media only screen and (min-width: 440px) {
-    .picker__header {
-      background: #F3F6F9; } }
-
-.picker__month,
-.picker__year {
-  display: inline-block;
-  margin: 0 4px; }
-
-.picker__month {
-  color: #d55741;
-  font-weight: 700; }
-
-.picker__year {
-  color: rgba(0, 0, 0, 0.54);
-  font-weight: 400; }
-
-.picker__nav--prev,
-.picker__nav--next {
-  cursor: pointer;
-  position: absolute;
-  padding: 16px;
-  height: 16px;
-  box-sizing: content-box;
-  top: 0;
-  width: 16px; }
-  .picker__nav--prev:hover,
-  .picker__nav--next:hover {
-    background: rgba(0, 0, 0, 0.1); }
-  .picker__nav--prev:before,
-  .picker__nav--next:before {
-    content: " ";
-    border-top: .5em solid transparent;
-    border-bottom: .5em solid transparent;
-    border-right: 0.75em solid rgba(0, 0, 0, 0.54);
-    width: 0;
-    height: 0;
-    display: block;
-    margin: 0 auto; }
-
-.picker__nav--prev {
-  left: 0; }
-
-.picker__nav--next {
-  right: 0; }
-  .picker__nav--next:before {
-    border-right: 0;
-    border-left: 0.75em solid rgba(0, 0, 0, 0.54); }
-
-.picker__nav--disabled,
-.picker__nav--disabled:hover,
-.picker__nav--disabled:before,
-.picker__nav--disabled:before:hover {
-  cursor: default;
-  background: none;
-  border-right-color: rgba(0, 0, 0, 0.26);
-  border-left-color: rgba(0, 0, 0, 0.26); }
-
-.picker__table {
-  text-align: center;
-  border-collapse: collapse;
-  border-spacing: 0;
-  table-layout: fixed;
-  font-size: inherit;
-  width: 100%; }
-  .picker__table td {
-    margin: 0;
-    padding: 0; }
-  @media only screen and (min-width: 440px) {
-    .picker__table thead {
-      background: #F3F6F9; } }
-
-.picker__weekday {
-  color: rgba(0, 0, 0, 0.54);
-  font-weight: 700;
-  font-size: 13px;
-  padding-bottom: 8px;
-  width: 1428.57143%; }
-
-.picker__day {
-  border: 1px solid transparent;
-  border-radius: 999px;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  margin: 4px auto; }
-  .picker__day:hover {
-    color: rgba(0, 0, 0, 0.87);
-    background: rgba(0, 0, 0, 0.1); }
-  .picker__day--today {
-    background: rgba(0, 0, 0, 0.1);
-    font-weight: 700;
-    position: relative; }
-  .picker__day--outfocus {
-    color: rgba(0, 0, 0, 0.26); }
-  .picker__day--selected, .picker__day--selected:hover {
-    background: #d55741;
-    color: white;
-    font-weight: 700; }
-  .picker__day--disabled, .picker__day--disabled:hover {
-    color: rgba(0, 0, 0, 0.26);
-    cursor: default; }
-
-.picker__footer {
-  text-align: center; }
-  .picker__footer button {
-    border: none;
-    background: #FFFFFF;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.54);
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 8px;
-    vertical-align: bottom; }
-    .picker__footer button:hover, .picker__footer button:focus {
-      background: rgba(0, 0, 0, 0.1);
-      color: rgba(0, 0, 0, 0.87); }
-    .picker__footer button:focus {
-      outline: none; }
-
-.picker__button--close:before {
-  content: "\D7";
-  color: rgba(0, 0, 0, 0.26);
-  display: inline-block;
-  height: 0;
-  margin-top: -1px;
-  margin-right: 4px;
-  position: relative;
-  vertical-align: top; }
 
 /*doc
 ---
@@ -2539,24 +2595,26 @@ category: UI Components
 ---
 
 ```html_example
-<div class="toggle-button-wrapper">
-	<input type="checkbox" name="topic-pill" id="topic-pill" value="ToggleBtn">
-	<label for="topic-pill" class="button button--small button--bordered">Dining Out</label>
+<div class="toggleButton">
+	<input class="toggleButton-input" type="checkbox" name="topic-pill" id="topic-pill" value="ToggleBtn" />
+	<label class="toggleButton-label" for="topic-pill">Dining Out</label>
 </div>
 ```
 */
-.toggle-button-wrapper {
+.toggleButton {
   display: inline-block;
   margin: 4px 0;
   -webkit-tap-highlight-color: transparent; }
-  .toggle-button-wrapper label {
-    margin: 0; }
-  .toggle-button-wrapper input {
-    display: none; }
-    .toggle-button-wrapper input:checked + label {
-      background: #3987cb;
-      border: none;
-      color: white; }
+
+.toggleButton-label {
+  margin: 0; }
+
+.toggleButton-input {
+  display: none; }
+  .toggleButton-input:checked + .toggleButton-label {
+    background: #3987cb;
+    border: none;
+    color: white; }
 
 input.toggle-pill {
   display: none; }
@@ -2570,10 +2628,10 @@ input.toggle-pill {
     background: #3987cb;
     color: white; }
 
-.toggle-on {
+.toggle--on {
   -webkit-animation: bounce-in-subtle 750ms linear;
   animation: bounce-in-subtle 750ms linear; }
-  .toggle-on label {
+  .toggle--on label {
     font-weight: 700; }
 
 /*doc
