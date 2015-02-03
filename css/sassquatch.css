@@ -28,8 +28,8 @@ parent: functions
 */
 /*doc
 ---
-title: str-capitalizeFirstLetter
-name: str-capitalizeFirstLetter
+title: str-firstCharToUpper
+name: str-firstCharToUpper
 parent: string
 ---
 Capitalizes first letter of a given string. Useful as a camelCase converter.
@@ -37,9 +37,9 @@ Capitalizes first letter of a given string. Useful as a camelCase converter.
 _returns string_
 
 ```
-str-capitalizeFirstLetter('snowflake') // -> 'Snowflake'
+str-firstCharToUpper('snowflake') // -> 'Snowflake'
 
-.specialstr-capitalizeFirstLetter("snowflake") // -> .specialSnowflake
+.specialstr-firstCharToUpper("snowflake") // -> .specialSnowflake
 ```
 */
 /*doc
@@ -757,16 +757,16 @@ Clears floated children.
 @extend %clearfix;
 ```
 */
-.bounds, .group {
+.bounds, .chunk {
   /**
   * For IE 6/7 only
   * Include this rule to trigger hasLayout and contain floats.
   */
   *zoom: 1; }
-  .bounds:before, .group:before, .bounds:after, .group:after {
+  .bounds:before, .chunk:before, .bounds:after, .chunk:after {
     content: " ";
     display: table; }
-  .bounds:after, .group:after {
+  .bounds:after, .chunk:after {
     clear: both; }
 
 /*doc
@@ -1278,106 +1278,6 @@ ul, ol,
       border-top: none;
       padding-top: 0; }
 
-.gridList {
-  margin: 0 -8px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0; }
-  .gridList > li {
-    font-size: 1rem;
-    display: inline-block;
-    margin: 0;
-    padding: 0 8px 8px 0;
-    vertical-align: top;
-    width: 50%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box; }
-  .gridList.gridList--20px > li {
-    width: 1.5625%; }
-  .gridList.gridList--30px > li {
-    width: 2.32558%; }
-  .gridList.gridList--40px > li {
-    width: 3.125%; }
-  .gridList.gridList--60px > li {
-    width: 4.7619%; }
-  .gridList.gridList--80px > li {
-    width: 6.25%; }
-  .gridList.gridList--100px > li {
-    width: 7.69231%; }
-  .gridList.gridList--200px > li {
-    width: 16.66667%; }
-  .gridList.gridList--300px > li {
-    width: 25%; }
-  .gridList.gridList--400px > li {
-    width: 33.33333%; }
-  @media only screen and (max-width: 960px) {
-    .gridList.gridList--20px > li {
-      width: 2.08333%; }
-    .gridList.gridList--30px > li {
-      width: 3.125%; }
-    .gridList.gridList--40px > li {
-      width: 4.16667%; }
-    .gridList.gridList--60px > li {
-      width: 6.25%; }
-    .gridList.gridList--80px > li {
-      width: 8.33333%; }
-    .gridList.gridList--100px > li {
-      width: 10%; }
-    .gridList.gridList--200px > li {
-      width: 20%; }
-    .gridList.gridList--300px > li {
-      width: 33.33333%; }
-    .gridList.gridList--400px > li {
-      width: 50%; } }
-  @media only screen and (max-width: 640px) {
-    .gridList.gridList--20px > li {
-      width: 3.125%; }
-    .gridList.gridList--30px > li {
-      width: 4.7619%; }
-    .gridList.gridList--40px > li {
-      width: 6.25%; }
-    .gridList.gridList--60px > li {
-      width: 9.09091%; }
-    .gridList.gridList--80px > li {
-      width: 12.5%; }
-    .gridList.gridList--100px > li {
-      width: 16.66667%; }
-    .gridList.gridList--200px > li {
-      width: 33.33333%; }
-    .gridList.gridList--300px > li {
-      width: 50%; }
-    .gridList.gridList--400px > li {
-      width: 50%; } }
-  @media only screen and (max-width: 440px) {
-    .gridList.gridList--20px > li {
-      width: 4.54545%; }
-    .gridList.gridList--30px > li {
-      width: 6.66667%; }
-    .gridList.gridList--40px > li {
-      width: 9.09091%; }
-    .gridList.gridList--60px > li {
-      width: 14.28571%; }
-    .gridList.gridList--80px > li {
-      width: 16.66667%; }
-    .gridList.gridList--100px > li {
-      width: 25%; }
-    .gridList.gridList--200px > li {
-      width: 50%; }
-    .gridList.gridList--300px > li {
-      width: 100%; }
-    .gridList.gridList--400px > li {
-      width: 100%; } }
-
-.gridList--photo-grid > li {
-  padding: 0 4px 4px 0; }
-
-@media only screen and (max-width: 640px) {
-  .gridList--photo-grid {
-    margin: 0 -24px 0 -16px;
-    padding: 0; } }
-@media only screen and (min-width: 640px) {
-  .tileGrid--photos .tileGrid-tile {
-    padding: 0 8px 8px 0; } }
 .inlineblockList {
   margin: 0;
   padding: 0; }
@@ -1417,27 +1317,18 @@ ul, ol,
     background-image: linear-gradient(to left, #fff, rgba(255, 255, 255, 0)); }
 
 .stripe--collection .hscroll-wrap-wrap:before {
-  background-image: -webkit-linear-gradient( left , #F3F6F9, rgba(243, 246, 249, 0));
-  background-image: linear-gradient(to right, #F3F6F9, rgba(243, 246, 249, 0)); }
+  background-image: -webkit-linear-gradient( left , #f3f6f9, rgba(243, 246, 249, 0));
+  background-image: linear-gradient(to right, #f3f6f9, rgba(243, 246, 249, 0)); }
 .stripe--collection .hscroll-wrap-wrap:after {
-  background-image: -webkit-linear-gradient( right , #F3F6F9, rgba(243, 246, 249, 0));
-  background-image: linear-gradient(to left, #F3F6F9, rgba(243, 246, 249, 0)); }
+  background-image: -webkit-linear-gradient( right , #f3f6f9, rgba(243, 246, 249, 0));
+  background-image: linear-gradient(to left, #f3f6f9, rgba(243, 246, 249, 0)); }
 
 .stripe--inverted .hscroll-wrap-wrap:before {
-  background-image: -webkit-linear-gradient( left , #353E48, rgba(53, 62, 72, 0));
-  background-image: linear-gradient(to right, #353E48, rgba(53, 62, 72, 0)); }
+  background-image: -webkit-linear-gradient( left , #353e48, rgba(53, 62, 72, 0));
+  background-image: linear-gradient(to right, #353e48, rgba(53, 62, 72, 0)); }
 .stripe--inverted .hscroll-wrap-wrap:after {
-  background-image: -webkit-linear-gradient( right , #353E48, rgba(53, 62, 72, 0));
-  background-image: linear-gradient(to left, #353E48, rgba(53, 62, 72, 0)); }
-
-.hscroll .tileGrid-tile {
-  box-sizing: content-box; }
-
-.toggle-pill-list {
-  list-style: none;
-  padding-left: 0; }
-  .toggle-pill-list li {
-    display: inline-block; }
+  background-image: -webkit-linear-gradient( right , #353e48, rgba(53, 62, 72, 0));
+  background-image: linear-gradient(to left, #353e48, rgba(53, 62, 72, 0)); }
 
 /*doc
 ---
@@ -1469,7 +1360,7 @@ textarea,
 select,
 .launcher {
   background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 2px;
+  border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: none;
   box-sizing: border-box;
@@ -1574,9 +1465,9 @@ textarea::-webkit-input-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
+    background: white;
     border: 1px solid rgba(0, 0, 0, 0.26);
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer; }
   .checkbox[type=checkbox]:checked:after, .checkbox[type=checkbox]:active:after {
     background: #3987cb; }
@@ -1624,7 +1515,7 @@ textarea::-webkit-input-placeholder {
     left: -0.0625em;
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
+    background: white;
     border: 1px solid rgba(0, 0, 0, 0.26);
     border-radius: 999px; }
   .radio[type=radio]:checked, .radio[type=radio]:hover, .radio[type=radio]:focus {
@@ -1633,12 +1524,12 @@ textarea::-webkit-input-placeholder {
       border: 1px solid #3987cb; }
 
 .inverted .radio[type=radio]:after {
-  background: #353E48;
+  background: #353e48;
   border: 1px solid rgba(255, 255, 255, 0.7); }
 .inverted .radio[type=radio]:hover:after, .inverted .radio[type=radio]:focus:after {
   border: 1px solid white; }
 .inverted .checkbox[type=checkbox]:after {
-  background: #353E48;
+  background: #353e48;
   border: 1px solid rgba(255, 255, 255, 0.7); }
 .inverted .checkbox[type=checkbox]:hover:after, .inverted .checkbox[type=checkbox]:focus:after {
   box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.12);
@@ -1752,10 +1643,10 @@ Class                | Description
   margin-bottom: 0; }
 
 .stripe--collection {
-  background-color: #F3F6F9; }
+  background-color: #f3f6f9; }
 
 .stripe--inverted {
-  background-color: #353E48; }
+  background-color: #353e48; }
 
 .stripe--hero, .stripe--photoHero {
   background-color: #d55741;
@@ -1768,8 +1659,8 @@ Class                | Description
 
 .stripe--photoHero:before {
   background-color: rgba(15, 20, 31, 0);
-  background-image: -webkit-linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
-  background-image: linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
+  background-image: -webkit-linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 25%, rgba(15, 20, 31, 0.9) 100%);
+  background-image: linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 25%, rgba(15, 20, 31, 0.9) 100%);
   content: '';
   display: block;
   height: 100%;
@@ -1824,33 +1715,38 @@ Class             | Description
   padding: 16px;
   width: 100%; }
 
+/*
+// should get handled by side titles now
 .bounds--form {
-  max-width: 550px; }
-
+	max-width: $form-max-width;
+}
+*/
 /*doc
 ---
-title: Group
-name: group
+title: Chunk
+name: chunk
 parent: layout
 ---
-Groups sections of content, adding
-a margin-bottom.
+Adds bottom space to an element
+or a group of elements.
 
 ```html_example
-<div class="_DOC-SHADE group">
+<div class="_DOC-SHADE chunk">
 	<h2>Some heading</h2>
 	<p>Some text</p>
 	<p class="text--caption">Some kind of caption</p>
 </div>
 
-<div class="_DOC-SHADE group">
+<p class="text--caption chunk">Chunky caption</p>
+
+<div class="_DOC-SHADE chunk">
 	<h2>Some heading</h2>
 	<p>Some text</p>
 	<p class="text--caption">Some kind of caption</p>
 </div>
 ```
 */
-.group {
+.chunk {
   margin-bottom: 16px; }
 
 /*doc
@@ -1877,34 +1773,34 @@ _Includes `table-cell` fallback for IE8._
 ```html_example
 <div class="row">
 	<div class="_DOC-SHADE row-item">Item 1</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 2</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 3</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 2</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 3</div>
 	<div class="_DOC-SHADE row-item">Item 4</div>
 </div>
 ```
 
 ```html_example
 <div class="row">
-	<div class="_DOC-SHADE row-item--shrink">Item 1</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 1</div>
 	<div class="_DOC-SHADE row-item">Item 2</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 3</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 3</div>
 </div>
 ```
 
 ```html_example
 <div class="row row--flexEnd">
-	<div class="_DOC-SHADE row-item--shrink">Item 1</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 2</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 3</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 1</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 2</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 3</div>
 </div>
 ```
 
 ```html_example
 <div class="row row--spaceBetween row--reverse">
-	<div class="_DOC-SHADE row-item--shrink">Item 1</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 2</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 3</div>
-	<div class="_DOC-SHADE row-item--shrink">Item 4</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 1</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 2</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 3</div>
+	<div class="_DOC-SHADE row-item row-item--shrink">Item 4</div>
 </div>
 ```
 */
@@ -1943,17 +1839,10 @@ _Includes `table-cell` fallback for IE8._
   padding-left: 16px;
   -webkit-flex-grow: 1;
   flex-grow: 1;
-  -ms-flex-positive: 1; }
+  -ms-flex-positive: 1;
+  width: 0; }
   .row-item:first-child {
     padding-left: 0; }
-
-.row-item--shirnk {
-  -webkit-flex-grow: 0;
-  flex-grow: 0;
-  -ms-flex-positive: 0;
-  -webkit-flex-shrink: 1;
-  flex-shrink: 1;
-  -ms-flex-negative: 1; }
 
 /*doc
 ---
@@ -2018,6 +1907,35 @@ Class                   | Description
   justify-content: space-around;
   -ms-flex-pack: center; }
 
+/*doc
+---
+title: Row Item variants
+name: flexrowItemVars
+parent: flexRow
+---
+
+A class of `.row-item` is __required__ on row items.
+The following classes are optional variants:
+
+Class                   | Description
+----------------------- | -------------------------------
+`.row-item--shrink`     | Item shrinks to fit content
+`.row-item--alignMiddle`| Vertically aligns content to middle
+*/
+.row-item--shrink {
+  -webkit-flex-grow: 0;
+  flex-grow: 0;
+  -ms-flex-positive: 0;
+  -webkit-flex-shrink: 1;
+  flex-shrink: 1;
+  -ms-flex-negative: 1;
+  width: initial; }
+
+.row-item--alignMiddle {
+  -webkit-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center; }
+
 .lt--IE9 .row {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -2032,6 +1950,144 @@ Class                   | Description
 .lt--IE9 .row-item--shrink {
   width: auto; }
 
+.lt--IE9 .row-item--alignMiddle {
+  vertical-align: middle; }
+
+/*doc
+---
+title: Grid List
+name: gridList
+parent: layout
+---
+A grid layout with breakpoint specific numbers of items in each row.
+
+better docs TK
+
+```html_example
+<ul class="gridList gridList--has1 atMedium_gridList--has3 atLarge_gridList--has4">
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+	<li class="_DOC-SHADE">grid cell</li>
+</ul>
+```
+*/
+.gridList {
+  margin: 0 -16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0; }
+  .gridList > li {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0;
+    padding: 0 16px 16px 0;
+    vertical-align: top;
+    width: 50%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+.gridList--photo-grid > li {
+  padding: 0 4px 4px 0; }
+
+@media only screen and (max-width: 640px) {
+  .gridList--photo-grid {
+    margin: 0 -24px 0 -16px;
+    padding: 0; } }
+.gridList--has1 > li {
+  width: 100%; }
+
+.gridList--has2 > li {
+  width: 50%; }
+
+.gridList--has3 > li {
+  width: 33.33333%; }
+
+.gridList--has4 > li {
+  width: 25%; }
+
+.gridList--has5 > li {
+  width: 20%; }
+
+.gridList--has6 > li {
+  width: 16.66667%; }
+
+.gridList--has7 > li {
+  width: 14.28571%; }
+
+.gridList--has8 > li {
+  width: 12.5%; }
+
+.gridList--has9 > li {
+  width: 11.11111%; }
+
+.gridList--has10 > li {
+  width: 10%; }
+
+@media only screen and (min-width: 640px) {
+  .atMedium_gridList--has1 > li {
+    width: 100%; }
+
+  .atMedium_gridList--has2 > li {
+    width: 50%; }
+
+  .atMedium_gridList--has3 > li {
+    width: 33.33333%; }
+
+  .atMedium_gridList--has4 > li {
+    width: 25%; }
+
+  .atMedium_gridList--has5 > li {
+    width: 20%; }
+
+  .atMedium_gridList--has6 > li {
+    width: 16.66667%; }
+
+  .atMedium_gridList--has7 > li {
+    width: 14.28571%; }
+
+  .atMedium_gridList--has8 > li {
+    width: 12.5%; }
+
+  .atMedium_gridList--has9 > li {
+    width: 11.11111%; }
+
+  .atMedium_gridList--has10 > li {
+    width: 10%; } }
+@media only screen and (min-width: 840px) {
+  .atLarge_gridList--has1 > li {
+    width: 100%; }
+
+  .atLarge_gridList--has2 > li {
+    width: 50%; }
+
+  .atLarge_gridList--has3 > li {
+    width: 33.33333%; }
+
+  .atLarge_gridList--has4 > li {
+    width: 25%; }
+
+  .atLarge_gridList--has5 > li {
+    width: 20%; }
+
+  .atLarge_gridList--has6 > li {
+    width: 16.66667%; }
+
+  .atLarge_gridList--has7 > li {
+    width: 14.28571%; }
+
+  .atLarge_gridList--has8 > li {
+    width: 12.5%; }
+
+  .atLarge_gridList--has9 > li {
+    width: 11.11111%; }
+
+  .atLarge_gridList--has10 > li {
+    width: 10%; } }
 /*doc
 ---
 title: Views
@@ -2104,8 +2160,7 @@ the "detail" responsibility.
   box-sizing: border-box;
   background: white;
   width: 100%;
-  min-height: 100vh;
-  padding-top: 48px; }
+  min-height: 100vh; }
 
 .view--splitList {
   position: fixed;
@@ -2177,12 +2232,15 @@ Class                      | Description
   box-sizing: border-box;
   background: #d55741;
   color: white;
-  height: 48px;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1; }
+  z-index: 1;
+  height: 56px; }
+  @media only screen and (min-width: 840px) {
+    .view-head {
+      height: 64px; } }
 
 .view--splitList .view-head {
   border-right: 1px solid rgba(0, 0, 0, 0.12);
@@ -2200,8 +2258,8 @@ Class                      | Description
     opacity: 0; }
 
 .view-head--photoOverlay {
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), transparent);
-  background: linear-gradient(rgba(0, 0, 0, 0.6), transparent); }
+  background: -webkit-linear-gradient(rgba(15, 20, 31, 0.8), rgba(15, 20, 31, 0));
+  background: linear-gradient(rgba(15, 20, 31, 0.8), rgba(15, 20, 31, 0)); }
 
 /*doc
 ---
@@ -2222,7 +2280,10 @@ content container for the view.
 ```
 */
 .view-body .stripe:first-child {
-  padding-top: 48px; }
+  padding-top: 56px; }
+  @media only screen and (min-width: 840px) {
+    .view-body .stripe:first-child {
+      padding-top: 64px; } }
 
 .view--splitList .view-body {
   height: 100vh;
@@ -2317,7 +2378,7 @@ category: UI Components
 */
 .avatar--person,
 .avatar {
-  background-color: #F3F6F9;
+  background-color: #f3f6f9;
   background-position: center 42%;
   display: inline-block;
   font-size: 24px;
@@ -2602,7 +2663,7 @@ Standard display for dates via the
 .dateTime-tearsheet,
 .tearsheet {
   display: block;
-  background: #FFFFFF;
+  background: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.87);
@@ -2662,8 +2723,8 @@ Cards for groups.
   min-height: 160px; }
   .photoCard:before {
     background-color: rgba(15, 20, 31, 0);
-    background-image: -webkit-linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
-    background-image: linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 50%, rgba(15, 20, 31, 0.8) 100%);
+    background-image: -webkit-linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 25%, rgba(15, 20, 31, 0.9) 100%);
+    background-image: linear-gradient(rgba(15, 20, 31, 0) 0%, rgba(15, 20, 31, 0.1) 25%, rgba(15, 20, 31, 0.9) 100%);
     content: '';
     display: block;
     height: 100%;
@@ -2901,291 +2962,80 @@ category: Modifiers
 Media-conditional modifiers allow us to apply
 a modification at a specific breakpoint.
 
+_Uses atMediaUp_
+
 #### Signature
 
-`.[property]--[modification]--[breakpoint][Up|Down|Small]`
+`.at[Breakpoint]_[property]--modification`
 
-ie. `.align--center--mOnly` applies center text alignment at the small breakpoint only
 
 #### Supported media and modifications
-_Better documentation for this TK_
-
-- `.align--[ center | right | left ]--[ small | medium | large ][ Up | Down | Only ]`
-- `.display--[ none | inline | inlineBlock | block ]--[ small | medium | large ][ Up | Down | Only ]`
-- `.border--[ none | top ]--[ small | medium | large ][ Up | Down | Only ]`
-- `.padding--none--[ small | medium | large ][ Up | Down | Only ]`
+- `.at[ Medium | Large ]_align--[ center | right | left ]`
+- `.at[ Medium | Large ]_display--[ none | inline | inlineBlock | block ]`
+- `.at[ Medium | Large ]_border--[ none | top ]`
+- `.at[ Medium | Large ]_padding--none`
 
 Example TK
 */
-@media only screen and (min-width: 440px) {
-  .align--center--smallUp {
+@media only screen and (min-width: 640px) {
+  .atMedium_align--center {
     text-align: center !important; } }
-@media only screen and (max-width: 440px) {
-  .align--center--smallDown {
-    text-align: center !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .align--center--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_align--center {
     text-align: center !important; } }
 @media only screen and (min-width: 640px) {
-  .align--center--mediumUp {
-    text-align: center !important; } }
-@media only screen and (max-width: 640px) {
-  .align--center--mediumDown {
-    text-align: center !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .align--center--mediumOnly {
-    text-align: center !important; } }
-@media only screen and (min-width: 960px) {
-  .align--center--largeUp {
-    text-align: center !important; } }
-@media only screen and (max-width: 960px) {
-  .align--center--largeDown {
-    text-align: center !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .align--center--largeOnly {
-    text-align: center !important; } }
-@media only screen and (min-width: 440px) {
-  .align--right--smallUp {
+  .atMedium_align--right {
     text-align: right !important; } }
-@media only screen and (max-width: 440px) {
-  .align--right--smallDown {
-    text-align: right !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .align--right--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_align--right {
     text-align: right !important; } }
 @media only screen and (min-width: 640px) {
-  .align--right--mediumUp {
-    text-align: right !important; } }
-@media only screen and (max-width: 640px) {
-  .align--right--mediumDown {
-    text-align: right !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .align--right--mediumOnly {
-    text-align: right !important; } }
-@media only screen and (min-width: 960px) {
-  .align--right--largeUp {
-    text-align: right !important; } }
-@media only screen and (max-width: 960px) {
-  .align--right--largeDown {
-    text-align: right !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .align--right--largeOnly {
-    text-align: right !important; } }
-@media only screen and (min-width: 440px) {
-  .align--left--smallUp {
+  .atMedium_align--left {
     text-align: left !important; } }
-@media only screen and (max-width: 440px) {
-  .align--left--smallDown {
-    text-align: left !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .align--left--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_align--left {
     text-align: left !important; } }
 @media only screen and (min-width: 640px) {
-  .align--left--mediumUp {
-    text-align: left !important; } }
-@media only screen and (max-width: 640px) {
-  .align--left--mediumDown {
-    text-align: left !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .align--left--mediumOnly {
-    text-align: left !important; } }
-@media only screen and (min-width: 960px) {
-  .align--left--largeUp {
-    text-align: left !important; } }
-@media only screen and (max-width: 960px) {
-  .align--left--largeDown {
-    text-align: left !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .align--left--largeOnly {
-    text-align: left !important; } }
-@media only screen and (min-width: 440px) {
-  .display--none--smallUp {
+  .atMedium_display--none {
     display: none !important; } }
-@media only screen and (max-width: 440px) {
-  .display--none--smallDown {
-    display: none !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .display--none--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_display--none {
     display: none !important; } }
 @media only screen and (min-width: 640px) {
-  .display--none--mediumUp {
-    display: none !important; } }
-@media only screen and (max-width: 640px) {
-  .display--none--mediumDown {
-    display: none !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .display--none--mediumOnly {
-    display: none !important; } }
-@media only screen and (min-width: 960px) {
-  .display--none--largeUp {
-    display: none !important; } }
-@media only screen and (max-width: 960px) {
-  .display--none--largeDown {
-    display: none !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .display--none--largeOnly {
-    display: none !important; } }
-@media only screen and (min-width: 440px) {
-  .display--block--smallUp {
+  .atMedium_display--block {
     display: block !important; } }
-@media only screen and (max-width: 440px) {
-  .display--block--smallDown {
-    display: block !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .display--block--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_display--block {
     display: block !important; } }
 @media only screen and (min-width: 640px) {
-  .display--block--mediumUp {
-    display: block !important; } }
-@media only screen and (max-width: 640px) {
-  .display--block--mediumDown {
-    display: block !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .display--block--mediumOnly {
-    display: block !important; } }
-@media only screen and (min-width: 960px) {
-  .display--block--largeUp {
-    display: block !important; } }
-@media only screen and (max-width: 960px) {
-  .display--block--largeDown {
-    display: block !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .display--block--largeOnly {
-    display: block !important; } }
-@media only screen and (min-width: 440px) {
-  .display--inline--smallUp {
+  .atMedium_display--inline {
     display: inline !important; } }
-@media only screen and (max-width: 440px) {
-  .display--inline--smallDown {
-    display: inline !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .display--inline--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_display--inline {
     display: inline !important; } }
 @media only screen and (min-width: 640px) {
-  .display--inline--mediumUp {
-    display: inline !important; } }
-@media only screen and (max-width: 640px) {
-  .display--inline--mediumDown {
-    display: inline !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .display--inline--mediumOnly {
-    display: inline !important; } }
-@media only screen and (min-width: 960px) {
-  .display--inline--largeUp {
-    display: inline !important; } }
-@media only screen and (max-width: 960px) {
-  .display--inline--largeDown {
-    display: inline !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .display--inline--largeOnly {
-    display: inline !important; } }
-@media only screen and (min-width: 440px) {
-  .display--inlineBlock--smallUp {
+  .atMedium_display--inlineBlock {
     display: inline-block !important; } }
-@media only screen and (max-width: 440px) {
-  .display--inlineBlock--smallDown {
-    display: inline-block !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .display--inlineBlock--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_display--inlineBlock {
     display: inline-block !important; } }
 @media only screen and (min-width: 640px) {
-  .display--inlineBlock--mediumUp {
-    display: inline-block !important; } }
-@media only screen and (max-width: 640px) {
-  .display--inlineBlock--mediumDown {
-    display: inline-block !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .display--inlineBlock--mediumOnly {
-    display: inline-block !important; } }
-@media only screen and (min-width: 960px) {
-  .display--inlineBlock--largeUp {
-    display: inline-block !important; } }
-@media only screen and (max-width: 960px) {
-  .display--inlineBlock--largeDown {
-    display: inline-block !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .display--inlineBlock--largeOnly {
-    display: inline-block !important; } }
-@media only screen and (min-width: 440px) {
-  .padding--none--smallUp {
+  .atMedium_padding--none {
     padding: 0 !important; } }
-@media only screen and (max-width: 440px) {
-  .padding--none--smallDown {
-    padding: 0 !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .padding--none--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_padding--none {
     padding: 0 !important; } }
 @media only screen and (min-width: 640px) {
-  .padding--none--mediumUp {
-    padding: 0 !important; } }
-@media only screen and (max-width: 640px) {
-  .padding--none--mediumDown {
-    padding: 0 !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .padding--none--mediumOnly {
-    padding: 0 !important; } }
-@media only screen and (min-width: 960px) {
-  .padding--none--largeUp {
-    padding: 0 !important; } }
-@media only screen and (max-width: 960px) {
-  .padding--none--largeDown {
-    padding: 0 !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .padding--none--largeOnly {
-    padding: 0 !important; } }
-@media only screen and (min-width: 440px) {
-  .border--top--smallUp {
+  .atMedium_border--top {
     border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (max-width: 440px) {
-  .border--top--smallDown {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .border--top--smallOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_border--top {
     border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
 @media only screen and (min-width: 640px) {
-  .border--top--mediumUp {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (max-width: 640px) {
-  .border--top--mediumDown {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .border--top--mediumOnly {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (min-width: 960px) {
-  .border--top--largeUp {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (max-width: 960px) {
-  .border--top--largeDown {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .border--top--largeOnly {
-    border-top: 1px solid rgba(0, 0, 0, 0.12) !important; } }
-@media only screen and (min-width: 440px) {
-  .border--none--smallUp {
+  .atMedium_border--none {
     border-width: 0 !important; } }
-@media only screen and (max-width: 440px) {
-  .border--none--smallDown {
-    border-width: 0 !important; } }
-@media only screen and (min-width: 440px) and (max-width: 440px) {
-  .border--none--smallOnly {
-    border-width: 0 !important; } }
-@media only screen and (min-width: 640px) {
-  .border--none--mediumUp {
-    border-width: 0 !important; } }
-@media only screen and (max-width: 640px) {
-  .border--none--mediumDown {
-    border-width: 0 !important; } }
-@media only screen and (min-width: 640px) and (max-width: 640px) {
-  .border--none--mediumOnly {
-    border-width: 0 !important; } }
-@media only screen and (min-width: 960px) {
-  .border--none--largeUp {
-    border-width: 0 !important; } }
-@media only screen and (max-width: 960px) {
-  .border--none--largeDown {
-    border-width: 0 !important; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
-  .border--none--largeOnly {
+@media only screen and (min-width: 840px) {
+  .atLarge_border--none {
     border-width: 0 !important; } }
 /*doc
 ---
