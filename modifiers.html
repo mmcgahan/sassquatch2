@@ -21,18 +21,18 @@
 
 <body>
 	<header class="stripe--inverted inverted">
-		<div class="bounds">
+		<div class="bounds bounds--wide">
 			<h1 class="text--display">Sassquatch 2</h1>
 			<p class="software-version">v0.0.1</p>
 		</div>
 	</header>
 
-	<section id="hologramBody" class="bounds row display--block--mediumDown">
+	<section id="hologramBody" class="bounds bounds--wide row display--block--mediumDown">
 		<nav class="row-item--shrink display--block--mediumDown padding--none--mediumDown">
 			<ul>
 				
 					<li class="display--inlineBlock--mediumDown">
-						<a href="modifiers.html">Modifiers</a>
+						<a class="followLink" href="modifiers.html">Modifiers</a>
 						
 							<ul>
 								
@@ -40,7 +40,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#alignMod">Alignment</a>
+											<a class="followLink" href="#alignMod">Alignment</a>
 										</li>
 									
 
@@ -49,7 +49,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#animMod">Animation</a>
+											<a class="followLink" href="#animMod">Animation</a>
 										</li>
 									
 
@@ -58,7 +58,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#backgroundMod">Background</a>
+											<a class="followLink" href="#backgroundMod">Background</a>
 										</li>
 									
 
@@ -72,7 +72,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#borderMod">Borders</a>
+											<a class="followLink" href="#borderMod">Borders</a>
 										</li>
 									
 
@@ -81,7 +81,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#displayMod">Display</a>
+											<a class="followLink" href="#displayMod">Display</a>
 										</li>
 									
 
@@ -90,7 +90,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#floatMod">Float</a>
+											<a class="followLink" href="#floatMod">Float</a>
 										</li>
 									
 
@@ -99,7 +99,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#keepAspect">Aspect ratio helper</a>
+											<a class="followLink" href="#keepAspect">Aspect ratio helper</a>
 										</li>
 									
 
@@ -108,7 +108,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#mediaMod">Media-conditional modifiers</a>
+											<a class="followLink" href="#mediaMod">Media-conditional modifiers</a>
 										</li>
 									
 
@@ -117,7 +117,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#sizeMod">Media Sizing</a>
+											<a class="followLink" href="#sizeMod">Media Sizing</a>
 										</li>
 									
 
@@ -126,7 +126,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#thumb">Thumbnails</a>
+											<a class="followLink" href="#thumb">Thumbnails</a>
 										</li>
 									
 
@@ -135,7 +135,7 @@
 									
 									
 										<li class="display--inline--mediumDown">
-											<a href="#typespaceMod">Type wrap/whitespace</a>
+											<a class="followLink" href="#typespaceMod">Type wrap/whitespace</a>
 										</li>
 									
 
@@ -145,17 +145,17 @@
 					</li>
 				
 					<li class="display--inlineBlock--mediumDown">
-						<a href="ui_components.html">UI Components</a>
+						<a class="followLink" href="ui_components.html">UI Components</a>
 						
 					</li>
 				
 					<li class="display--inlineBlock--mediumDown">
-						<a href="sass_utilities.html">Sass Utilities</a>
+						<a class="followLink" href="core.html">Core</a>
 						
 					</li>
 				
 					<li class="display--inlineBlock--mediumDown">
-						<a href="core.html">Core</a>
+						<a class="followLink" href="sass_utilities.html">Sass Utilities</a>
 						
 					</li>
 				
@@ -373,6 +373,10 @@ a modification at a specific breakpoint.</p>
 <td><code>.wrap--singleLine--truncate</code></td>
 <td>forces text to a single line (nowrap) and truncates with &hellip;</td>
 </tr>
+<tr>
+<td><code>.matchLineHeight</code></td>
+<td>adds a small amount of top and bottom margin to a non-text element to match line height of nearby text</td>
+</tr>
 </tbody></table>
 	</main>
 	</section>
@@ -382,6 +386,13 @@ a modification at a specific breakpoint.</p>
 <script type="text/javascript" src="js/lunr.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	// Disable links by default
+	$('a').click(function(e) {
+		if ( $(this).hasClass('followLink') ) return;
+		e.preventDefault();
+	});
+
+
 	var index = lunr(function() {
 		this.field('title', {boost: 10});
 		this.field('breadcrumb');
@@ -539,9 +550,9 @@ $(function() {
 				
 
 				index.add({
-					"title": "Photo Card",
-					"breadcrumb": "UI Components > Photo Card",
-					"path": "ui_components.html#photoCard"
+					"title": "Tabs",
+					"breadcrumb": "UI Components > Tabs",
+					"path": "ui_components.html#tabs"
 				});
 
 			
@@ -562,6 +573,280 @@ $(function() {
 					"title": "Toggle Pills",
 					"breadcrumb": "UI Components > Toggle Pills",
 					"path": "ui_components.html#togglePills"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Cards",
+					"breadcrumb": "UI Components > Cards",
+					"path": "ui_components.html#uiCard"
+				});
+
+			
+		
+	
+		
+			
+				
+				
+
+				index.add({
+					"title": "Forms",
+					"breadcrumb": "Core > Forms",
+					"path": "core.html#forms"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Layout",
+					"breadcrumb": "Core > Layout",
+					"path": "core.html#layout"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Bounds",
+					"breadcrumb": "Core > Bounds",
+					"path": "core.html#bounds"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Chunk",
+					"breadcrumb": "Core > Chunk",
+					"path": "core.html#chunk"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Flex Row",
+					"breadcrumb": "Core > Flex Row",
+					"path": "core.html#flexRow"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Row Item variants",
+					"breadcrumb": "Core > Row Item variants",
+					"path": "core.html#flexrowItemVars"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Row variants",
+					"breadcrumb": "Core > Row variants",
+					"path": "core.html#flexrowParent"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Grid List",
+					"breadcrumb": "Core > Grid List",
+					"path": "core.html#gridList"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Grid List variants",
+					"breadcrumb": "Core > Grid List variants",
+					"path": "core.html#gridListVariants"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Stripe",
+					"breadcrumb": "Core > Stripe",
+					"path": "core.html#stripe"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Typesetting",
+					"breadcrumb": "Core > Typesetting",
+					"path": "core.html#typesetting"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Body/primary text",
+					"breadcrumb": "Core > Body/primary text",
+					"path": "core.html#bodyText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Bulleted lists",
+					"breadcrumb": "Core > Bulleted lists",
+					"path": "core.html#bulletedList"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Caption text",
+					"breadcrumb": "Core > Caption text",
+					"path": "core.html#captionText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Display text",
+					"breadcrumb": "Core > Display text",
+					"path": "core.html#displayText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Hint text",
+					"breadcrumb": "Core > Hint text",
+					"path": "core.html#hintText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Inverted text",
+					"breadcrumb": "Core > Inverted text",
+					"path": "core.html#invertedText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Running text",
+					"breadcrumb": "Core > Running text",
+					"path": "core.html#runningText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Link color",
+					"breadcrumb": "Core > Link color",
+					"path": "core.html#linkColor"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Secondary text",
+					"breadcrumb": "Core > Secondary text",
+					"path": "core.html#secondaryText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Small text",
+					"breadcrumb": "Core > Small text",
+					"path": "core.html#smallText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Tertiary text",
+					"breadcrumb": "Core > Tertiary text",
+					"path": "core.html#tertiaryText"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Graphic text",
+					"breadcrumb": "Core > Graphic text",
+					"path": "core.html#textGraphic"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Views",
+					"breadcrumb": "Core > Views",
+					"path": "core.html#views"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "View Body",
+					"breadcrumb": "Core > View Body",
+					"path": "core.html#viewBody"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "View Head",
+					"breadcrumb": "Core > View Head",
+					"path": "core.html#viewHead"
 				});
 
 			
@@ -863,16 +1148,6 @@ $(function() {
 				
 
 				index.add({
-					"title": "Triangle mixin",
-					"breadcrumb": "Sass Utilities > Triangle mixin",
-					"path": "sass_utilities.html#triangleMixin"
-				});
-
-			
-				
-				
-
-				index.add({
 					"title": "Text utils",
 					"breadcrumb": "Sass Utilities > Text utils",
 					"path": "sass_utilities.html#text"
@@ -886,240 +1161,6 @@ $(function() {
 					"title": "Text protection shim",
 					"breadcrumb": "Sass Utilities > Text protection shim",
 					"path": "sass_utilities.html#textProtection"
-				});
-
-			
-		
-	
-		
-			
-				
-				
-
-				index.add({
-					"title": "Layout",
-					"breadcrumb": "Core > Layout",
-					"path": "core.html#layout"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Bounds",
-					"breadcrumb": "Core > Bounds",
-					"path": "core.html#bounds"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Chunk",
-					"breadcrumb": "Core > Chunk",
-					"path": "core.html#chunk"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Flex Row",
-					"breadcrumb": "Core > Flex Row",
-					"path": "core.html#flexRow"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Row Item variants",
-					"breadcrumb": "Core > Row Item variants",
-					"path": "core.html#flexrowItemVars"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Row variants",
-					"breadcrumb": "Core > Row variants",
-					"path": "core.html#flexrowParent"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Grid List",
-					"breadcrumb": "Core > Grid List",
-					"path": "core.html#gridList"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Grid List variants",
-					"breadcrumb": "Core > Grid List variants",
-					"path": "core.html#gridListVariants"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Stripe",
-					"breadcrumb": "Core > Stripe",
-					"path": "core.html#stripe"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Typesetting",
-					"breadcrumb": "Core > Typesetting",
-					"path": "core.html#typesetting"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Body/primary text",
-					"breadcrumb": "Core > Body/primary text",
-					"path": "core.html#bodyText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Bulleted lists",
-					"breadcrumb": "Core > Bulleted lists",
-					"path": "core.html#bulletedList"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Caption text",
-					"breadcrumb": "Core > Caption text",
-					"path": "core.html#captionText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Display text",
-					"breadcrumb": "Core > Display text",
-					"path": "core.html#displayText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Hint text",
-					"breadcrumb": "Core > Hint text",
-					"path": "core.html#hintText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Inverted text",
-					"breadcrumb": "Core > Inverted text",
-					"path": "core.html#invertedText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Running text",
-					"breadcrumb": "Core > Running text",
-					"path": "core.html#runningText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Link color",
-					"breadcrumb": "Core > Link color",
-					"path": "core.html#linkColor"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Secondary text",
-					"breadcrumb": "Core > Secondary text",
-					"path": "core.html#secondaryText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Small text",
-					"breadcrumb": "Core > Small text",
-					"path": "core.html#smallText"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "Views",
-					"breadcrumb": "Core > Views",
-					"path": "core.html#views"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "View Body",
-					"breadcrumb": "Core > View Body",
-					"path": "core.html#viewBody"
-				});
-
-			
-				
-				
-
-				index.add({
-					"title": "View Head",
-					"breadcrumb": "Core > View Head",
-					"path": "core.html#viewHead"
 				});
 
 			
