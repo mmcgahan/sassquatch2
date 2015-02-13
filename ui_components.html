@@ -72,6 +72,15 @@
 									
 									
 										<li class="display--inline--mediumDown">
+											<a class="followLink" href="#tag">RSVP Tags</a>
+										</li>
+									
+
+								
+
+									
+									
+										<li class="display--inline--mediumDown">
 											<a class="followLink" href="#tearsheet">Tearsheet</a>
 										</li>
 									
@@ -143,6 +152,43 @@
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </pre></div></div></div>
+<h2>Avatar variants</h2>
+
+<p>A base class of <code>avatar</code> is <strong>required</strong>. The following classes are
+optional variants:</p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>avatar--small</code></td>
+<td>Adjusts avatar size to the smallest media size</td>
+</tr>
+<tr>
+<td><code>avatar--big</code></td>
+<td>Adjusts avatar size to the biggest media size</td>
+</tr>
+<tr>
+<td><code>avatar--person</code></td>
+<td>Variant for people</td>
+</tr>
+<tr>
+<td><code>avatar--org</code></td>
+<td>Variant for organizers</td>
+</tr>
+<tr>
+<td><code>avatar--fbFriend</code></td>
+<td>Variant for facebook friends</td>
+</tr>
+<tr>
+<td><code>avatar--icon</code></td>
+<td>For icons in avatars (might move this in a later version)</td>
+</tr>
+</tbody></table>
+
 <h1 id="buttons">Buttons</h1>
 
 <h4>Example</h4>
@@ -249,6 +295,41 @@ are optional variants:</p>
 <tr>
 <td><code>tabs-tab--selected</code></td>
 <td>Applies styles for tab selected state</td>
+</tr>
+</tbody></table>
+
+<h1 id="tag">RSVP Tags</h1>
+
+<p>Status tags for RSVP.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="rsvpTag rsvpTag--yes">Going</div>
+<div class="rsvpTag rsvpTag--no">Not going</div>
+<div class="rsvpTag rsvpTag--waiting">Waiting</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rsvpTag rsvpTag--yes"</span><span class="nt">&gt;</span>Going<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rsvpTag rsvpTag--no"</span><span class="nt">&gt;</span>Not going<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rsvpTag rsvpTag--waiting"</span><span class="nt">&gt;</span>Waiting<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h2>Variants</h2>
+
+<p>A class of <code>rsvpTag</code> is <strong>required</strong>.
+Variant classes:</p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>rsvpTag--yes</code></td>
+<td>indicates &quot;yes&quot; RSVP status</td>
+</tr>
+<tr>
+<td><code>rsvpTag--no</code></td>
+<td>indicates &quot;no&quot; RSVP status</td>
+</tr>
+<tr>
+<td><code>rsvpTag--waiting</code></td>
+<td>indicates waitlist RSVP status</td>
 </tr>
 </tbody></table>
 
@@ -606,6 +687,16 @@ $(function() {
 					"title": "Tabs",
 					"breadcrumb": "UI Components > Tabs",
 					"path": "ui_components.html#tabs"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "RSVP Tags",
+					"breadcrumb": "UI Components > RSVP Tags",
+					"path": "ui_components.html#tag"
 				});
 
 			
