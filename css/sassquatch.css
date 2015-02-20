@@ -1862,7 +1862,7 @@ _Includes `table-cell` fallback for IE8._
   -webkit-flex-grow: 1;
   flex-grow: 1;
   -ms-flex-positive: 1;
-  width: 0; }
+  width: auto; }
   .row-item:first-child {
     padding-left: 0; }
 
@@ -1966,21 +1966,21 @@ Class                   | Description
   align-self: center;
   -ms-flex-item-align: center; }
 
-.ieRoot--lt_IE9 .row {
+.ieRoot_lt_IE10 .row {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: table;
   table-layout: auto;
   width: 100%; }
 
-.ieRoot--lt_IE9 .row-item {
+.ieRoot_lt_IE10 .row-item {
   display: table-cell;
   width: 100%; }
 
-.ieRoot--lt_IE9 .row-item--shrink {
+.ieRoot_lt_IE10 .row-item--shrink {
   width: auto; }
 
-.ieRoot--lt_IE9 .row-item--alignMiddle {
+.ieRoot_lt_IE10 .row-item--alignMiddle {
   vertical-align: middle; }
 
 /*doc
@@ -3304,7 +3304,7 @@ Class                   | Description
 `.display--none`        | sets `display` to `none`
 `.display--block`       | sets `display` to `block`
 `.display--inline`      | sets `display` to `inline`
-`.display--inlineblock` | sets `display` to `inlineblock`
+`.display--inlineBlock` | sets `display` to `inlineblock`
 
 */
 .display--none {

@@ -4,6 +4,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 	<title>Sassquatch 2 : Typography</title>
@@ -19,7 +20,11 @@
 	<link rel="stylesheet" href="css/sassquatch.css">
 </head>
 
-<body>
+<!--[if IE 8]> <body class="ieRoot_IE8 ieRoot_lt_IE9 ieRoot_lt_IE10"> <![endif]-->
+<!--[if IE 9]> <body class="ieRoot_IE9 ieRoot_lt_IE10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+	<!-- HOTDOGS -->
 	<header class="stripe--inverted inverted">
 		<div class="bounds bounds--wide">
 			<h1 class="text--display">Sassquatch 2</h1>
@@ -27,8 +32,8 @@
 		</div>
 	</header>
 
-	<section id="hologramBody" class="bounds bounds--wide stack atMedium_stack--spread">
-		<nav class="stack-item" style="max-width: 260px;">
+	<section id="hologramBody" class="bounds bounds--wide">
+		<nav id="navigation">
 			<ul>
 				
 					<li class="display--inlineBlock--mediumDown">
@@ -156,7 +161,7 @@
 			</ul>
 		</nav>
 
-	 	<main id="content" class="stack-item">
+	 	<main id="content">
 <h1 id="bodyText">Body/primary text</h1>
 <div class="codeExample"><div class="exampleOutput"><p>This is default body text, inheritied from type styles applied to &lt;body&gt;</p>
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;p&gt;</span>This is default body text, inheritied from type styles applied to <span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span><span class="nt">&lt;/p&gt;</span>
