@@ -28,7 +28,7 @@
 	<header class="stripe--inverted inverted">
 		<div class="bounds bounds--wide">
 			<h1 class="text--display">Sassquatch 2</h1>
-			<p class="software-version">v0.2.0</p>
+			<a href="https://github.com/meetup/sassquatch2/releases" class="followLink software-version">v0.3.2</a>
 		</div>
 	</header>
 
@@ -101,6 +101,15 @@
 									
 										<li class="display--inline--mediumDown">
 											<a class="followLink" href="#floatMod">Float</a>
+										</li>
+									
+
+								
+
+									
+									
+										<li class="display--inline--mediumDown">
+											<a class="followLink" href="#jsMod">Javascript-conditional modifiers</a>
 										</li>
 									
 
@@ -295,6 +304,38 @@ and overflow hidden.</p>
 <h1 id="floatMod">Float</h1>
 
 <p>TK <code>.clearfix</code></p>
+
+<h1 id="jsMod">Javascript-conditional modifiers</h1>
+
+<p>Conditionally changes the display property of an element based
+javascript availability.</p>
+
+<p><em>Assumes a class of <code>hasJS</code> is added to the <code>body</code> tag with
+javascript on page load</em></p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>hasJS_display--block</code></td>
+<td>Sets <code>display</code> property to <code>block</code> if user has JS</td>
+</tr>
+<tr>
+<td><code>hasJS_display--inline</code></td>
+<td>Sets <code>display</code> property to <code>inline</code> if user has JS</td>
+</tr>
+<tr>
+<td><code>hasJS_display--inlineBlock</code></td>
+<td>Sets <code>display</code> property to <code>inline-block</code> if user has JS</td>
+</tr>
+<tr>
+<td><code>hasJS_display--none</code></td>
+<td>Sets <code>display</code> property to <code>none</code> if user has JS</td>
+</tr>
+</tbody></table>
 
 <h1 id="keepAspect">Aspect ratio helper</h1>
 
@@ -531,16 +572,6 @@ $(function() {
 				
 
 				index.add({
-					"title": "Button color mixin",
-					"breadcrumb": "Sass Utils | Mixins & Placeholders > Button color mixin",
-					"path": "sass_utils_|_mixins_&_placeholders.html#buttonColor"
-				});
-
-			
-				
-				
-
-				index.add({
 					"title": "Button personality placeholder",
 					"breadcrumb": "Sass Utils | Mixins & Placeholders > Button personality placeholder",
 					"path": "sass_utils_|_mixins_&_placeholders.html#buttonPersonality"
@@ -728,6 +759,16 @@ $(function() {
 					"title": "Float",
 					"breadcrumb": "Modifier Classes > Float",
 					"path": "modifier_classes.html#floatMod"
+				});
+
+			
+				
+				
+
+				index.add({
+					"title": "Javascript-conditional modifiers",
+					"breadcrumb": "Modifier Classes > Javascript-conditional modifiers",
+					"path": "modifier_classes.html#jsMod"
 				});
 
 			
